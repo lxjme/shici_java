@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="net.jiaoxiliang.shici.mapper.AuthorMapper">
+    <select id="findAll" resultType="Author">
+        select * from mysite_author_bak 
+        <if test="start != null and limit != null">
+            limit #{start},#{limit}
+        </if>
+    </select>
+    <select id="selectById" resultType="Author">
+        select * from mysite_author_bak where id = #{id}
+    </select>
+    <select id="total" resultType="int">
+        select count(*) from mysite_author_bak
+    </select>
+</mapper>

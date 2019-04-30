@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="net.jiaoxiliang.shici.mapper.CategoryMapper">
+    <select id="findAll" resultType="Category">
+        select * from t_category order by id desc
+        <if test="start != null and limit != null">
+            limit #{start},#{limit}
+        </if>
+    </select>
+    <select id="getCategoryById" resultType="Category">
+        select * from t_category where id = #{id}
+    </select>
+    <select id="total" resultType="int">
+        select count(*) from t_category
+    </select>  
+    <insert id="addCategory" useGeneratedKeys="true" keyProperty="id" parameterType="Category">
+        insert into t_category (c_name) values (#{c_name})
+    </insert>
+    <delete id="delCategory" parameterType="Category">
+        delete from t_category where id = #{id}
+    </delete>
+    <update id="saveCategory" parameterType="Category">
+        update t_category set c_name = #{c_name} where id = #{id}
+    </update>
+</mapper>

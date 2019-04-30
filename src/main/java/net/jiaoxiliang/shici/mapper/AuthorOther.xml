@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="net.jiaoxiliang.shici.mapper.AuthorOtherMapper">
+    <select id="getAuthorOther"  resultType="AuthorOther">
+        select * from mysite_author_detail_bak
+        <if test="author_id != null">
+            where author_id = #{author_id}
+        </if>
+    </select>
+</mapper>
